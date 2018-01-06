@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: 
           name: Jekyll build
-          command: jekyll build --source ~/project
+          command: jekyll build --source ~/project --destination ~/project/_site
       - run: 
           name: Validate HTML
           command: bundle exec htmlproofer ./_site --allow-hash-href --check-favicon --check-html --disable-external
