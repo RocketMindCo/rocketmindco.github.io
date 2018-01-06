@@ -1,10 +1,21 @@
-machine:
-  environment:
-    NOKOGIRI_USE_SYSTEM_LIBRARIES: true
-dependencies:
-  post:
-    - bundle exec jekyll build
-test:
-  post:
-    - bundle exec htmlproofer ./_site --allow-hash-href --check-favicon --check-html --disable-external
+version: 2
+jobs:
+  build:
+    docker:
+      - image: 
+        environment:
+          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+    steps:
+      - checkout
+      - run: 
+          name: Jekyll build
+          command: bundle exec jekyll build
+      - run: 
+          name: Validate HTML
+          command: bundle exec htmlproofer ./_site --allow-hash-href --check-favicon --check-html --disable-external
+      - store_artifacts:
+          path: test-reports/
+          destination: tr1
+      - store_test_results:
+          path: test-reports/
 
