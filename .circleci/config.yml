@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: starefossen/ruby-node:2-8
+      - image: circleci/ruby:2
     working_directory: ~/project
     steps:
       - checkout
