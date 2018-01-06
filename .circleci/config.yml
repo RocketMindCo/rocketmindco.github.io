@@ -1,13 +1,11 @@
 version: 2
-jobs:
-  build:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+machine:
+  environment:
+    NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+dependencies:
+  post:
+    - bundle exec jekyll build
+test:
+  post:
+    - bundle exec htmlproofer ./_site --allow-hash-href --check-favicon --check-html --disable-external
+
