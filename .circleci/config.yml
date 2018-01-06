@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Ruby dependencies
-          command: bundle install
+          command: bundle install & gem install html-proof && htmlproof
       - run:
           name: Node dependencies
           command: npm install -g html-proofer --unsafe-perm
