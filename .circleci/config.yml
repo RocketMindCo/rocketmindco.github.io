@@ -1,4 +1,3 @@
-version: 1
 machine:
   environment:
     NOKOGIRI_USE_SYSTEM_LIBRARIES: true
