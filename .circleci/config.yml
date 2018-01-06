@@ -4,6 +4,10 @@ general:
     only:
       - master
       - develop
+      - hotfix/*
+      - feature/*
+      - release/*
+      - bugfix/*
 jobs:
   build:
     docker:
