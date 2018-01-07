@@ -5,4 +5,11 @@ url: "http://rocketmind.co"
 
 markdown: kramdown
 plugins:
-  - jekyll-feed
+  - jekyll-coffeescript
+  - bootstrap
+
+sass:
+  load_paths:
+    - css
+    - _lib
+  style: compressed

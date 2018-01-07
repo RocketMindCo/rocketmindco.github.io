@@ -1,0 +1,7 @@
+<meta charset="utf-8">
+{% if page.meta_description %}<meta name="description" content="{{ page.meta_description | strip_html | strip_newlines | truncate: 300 }}">{% endif %}
+{% if page.meta_keywords %}<meta name="keywords" content="{{page.meta_keywords | join: ','}}">{% endif %}
+
+<title>{{ site.title | strip_html }}{% if page.title %} | {{ page.title | strip_html }}{% endif %}</title>
+
+<link rel="stylesheet" href="{{site.baseurl}}/css/styles.css" />
