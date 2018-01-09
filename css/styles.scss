@@ -6,12 +6,14 @@
 
 h1.logo {
   margin-bottom: 0;
+  text-shadow: -1px -1px 0 rgba(0,0,0,.25);
   & > span {
     color: #FAD724;
   }
 }
 
 p.slogan {
+  text-shadow: -1px -1px 0 rgba(0,0,0,.25);
   text-transform: uppercase;
   font-size: .5rem;
   letter-spacing: .25rem;
