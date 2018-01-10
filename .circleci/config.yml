@@ -1,13 +1,4 @@
 version: 2
-general:
-  branches:
-    only:
-      - master
-      - develop
-      - hotfix/*
-      - feature/*
-      - release/*
-      - bugfix/*
 jobs:
   build:
     docker:
@@ -21,7 +12,24 @@ jobs:
       - run:
           name: Build
           command: bundle exec jekyll build --verbose
+  test:
+    docker:
+      - image: starefossen/ruby-node:2-8
+    working_directory: ~/project
+    steps:
       - run:
           name: Validate HTML
           command: bundle exec htmlproofer ./_site --check-html --disable-external
-          
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - test
+      - deploy:
+          requires:
+            - hold
+          filters:
+            branches:
+              only:
+                - master
