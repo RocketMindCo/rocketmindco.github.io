@@ -17,6 +17,13 @@ jobs:
       - image: starefossen/ruby-node:2-8
     working_directory: ~/project
     steps:
+      - checkout
+      - run:
+          name: Ruby dependencies
+          command: bundle install
+      - run:
+          name: Build
+          command: bundle exec jekyll build --verbose
       - run:
           name: Validate HTML
           command: bundle exec htmlproofer ./_site --check-html --disable-external
