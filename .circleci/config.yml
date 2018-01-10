@@ -30,18 +30,3 @@ workflows:
   build:
     jobs:
       - build
-      - hold:
-          type: approval
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
-      - deploy:
-          requires:
-            - hold
-          filters:
-            branches:
-              only:
-                - master
