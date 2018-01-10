@@ -1,21 +1,12 @@
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: starefossen/ruby-node:2-8
+
 version: 2
 jobs:
   build:
-    docker:
-      - image: starefossen/ruby-node:2-8
-    working_directory: ~/project
-    steps:
-      - checkout
-      - run:
-          name: Ruby dependencies
-          command: bundle install
-      - run:
-          name: Build
-          command: bundle exec jekyll build --verbose
-  test:
-    docker:
-      - image: starefossen/ruby-node:2-8
-    working_directory: ~/project
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -27,18 +18,16 @@ jobs:
       - run:
           name: Validate HTML
           command: bundle exec htmlproofer ./_site --check-html --disable-external
+
 workflows:
   version: 2
   build:
     jobs:
       - build
-      - test
-          requires:
-            - build
       - hold:
           type: approval
           requires:
-            - test
+            - build
           filters:
             branches:
               only:
