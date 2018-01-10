@@ -26,6 +26,8 @@ workflows:
     jobs:
       - build
       - test
+          requires:
+            - build
       - hold:
           type: approval
           requires:
