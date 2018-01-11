@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Validate HTML
           command: bundle exec htmlproofer ./_site --check-html --disable-external
-  update_dev:
+  update_develop:
     <<: *defaults
     steps:
       - checkout
@@ -31,12 +31,13 @@ jobs:
       - run:
           name: Deploy
           command: scp -rvfp ./_site/* root@dev.rocketmind.co:/var/www/rock/html
+
 workflows:
   version: 2
   build:
     jobs:
       - test
-      - deploy
+      - update_develop
           requires:
             - test
           filters:
