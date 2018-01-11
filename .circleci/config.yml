@@ -33,4 +33,4 @@ jobs:
           command: bundle exec jekyll build --verbose
       - run:
           name: Deploy
-          command: scp -rvfp ./_site/* root@dev.rocketmind.co:/var/www/rock/html
+          command: scp -rvp ./_site/* root@dev.rocketmind.co:/var/www/rock/html
