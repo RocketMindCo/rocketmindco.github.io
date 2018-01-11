@@ -37,7 +37,7 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  update_develop:
     jobs:
       - test
       - update_develop
