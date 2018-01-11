@@ -24,6 +24,9 @@ jobs:
       branches:
         only: master
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "d9:8e:6e:88:99:23:75:74:fb:d0:da:a2:36:5f:7d:bc"
       - checkout
       - run:
           name: Ruby dependencies
