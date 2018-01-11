@@ -18,9 +18,28 @@ jobs:
       - run:
           name: Validate HTML
           command: bundle exec htmlproofer ./_site --check-html --disable-external
-
+  update_dev:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Ruby dependencies
+          command: bundle install
+      - run:
+          name: Build
+          command: bundle exec jekyll build --verbose
+      - run:
+          name: Deploy
+          command: scp -rvfp ./_site/* root@dev.rocketmind.co:/var/www/rock/html
 workflows:
   version: 2
   build:
     jobs:
       - test
+      - deploy
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
