@@ -34,12 +34,3 @@ jobs:
       - run:
           name: Deploy
           command: scp -rvfp ./_site/* root@dev.rocketmind.co:/var/www/rock/html
-
-workflows:
-  version: 2
-  update_develop:
-    jobs:
-      - test
-      - update_develop
-          requires:
-            - test
