@@ -36,4 +36,4 @@ jobs:
           command: bundle exec jekyll build --verbose
       - run:
           name: Deploy
-          command: scp -rvp -oStrictHostKeyChecking=no ./_site/* root@dev.rocketmind.co:/var/www/rock/html
+          command: ssh root@dev.rocketmind.co "rm -rvf /var/www/rock/html/*"; scp -rvp ./_site/* root@dev.rocketmind.co:/var/www/rock/html -y
