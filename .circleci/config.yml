@@ -26,7 +26,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "d9:8e:6e:88:99:23:75:74:fb:d0:da:a2:36:5f:7d:bc"
+            - "9b:8f:d9:5d:38:b6:4e:31:54:fe:85:22:ad:74:43:1c"
       - checkout
       - run:
           name: Ruby dependencies
