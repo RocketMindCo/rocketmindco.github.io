@@ -1,12 +1,11 @@
 title: RocketMind
 email: admin@rocketmind.co
-baseurl: ""
 url: "http://rocketmind.co"
+base_path: ""
 
 markdown: kramdown
 plugins:
   - jekyll-coffeescript
-  - bootstrap
 
 sass:
   load_paths:
